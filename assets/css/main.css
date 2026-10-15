@@ -20655,3 +20655,26 @@ body.tw-magic-cursor #magic-cursor {
   height: 100%;
   background-repeat: no-repeat;
 }/*# sourceMappingURL=main.css.map */
+/* ==================== Form validation & search (added) ==================== */
+form .is-invalid {
+  border-color: #e5484d !important;
+  box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.15) !important;
+}
+form.is-sending {
+  cursor: progress;
+}
+.search-page-form input {
+  flex: 1;
+}
+.search-page-btn {
+  border: 0;
+  white-space: nowrap;
+}
+.search-results-list {
+  list-style: none;
+  padding: 0;
+}
+.search-results-list mark {
+  background: rgba(255, 214, 0, 0.45);
+  padding: 0 2px;
+}

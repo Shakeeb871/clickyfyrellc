@@ -223,6 +223,7 @@
         // ========================== Settings Panel Js End =====================
 
         // ********************* Toast Notification Js start *********************
+        window.toastMessage = toastMessage;
         function toastMessage(messageType, messageTitle, messageText, messageIcon) {
             let $toastContainer = $("#toast-container");
 
@@ -302,20 +303,7 @@
         // ========================= Delete Item Js End ===================
 
         // ========================= Form Submit Js Start ===================
-        $(document).on("submit", ".form-submit", function (e) {
-            e.preventDefault();
-
-            $("input").val("");
-
-            $("textarea").val("");
-
-            toastMessage(
-                "success",
-                "Success",
-                "Form submitted successfully!",
-                "ph-fill ph-check-circle"
-            );
-        });
+        // Real form handling (validation + sending) lives in assets/js/forms.js
         // ========================= Form Submit Js End ===================
 
         // ================== Password Show Hide Js Start ==========
