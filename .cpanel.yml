@@ -1,0 +1,18 @@
+# cPanel Git Version Control deployment (Deploy HEAD Commit)
+#
+# DEPLOYPATH must be the subdomain's Document Root shown in cPanel > Domains.
+# It is a dedicated folder, so the main site in public_html is never touched.
+# When going live on the main domain, change only DEPLOYPATH (after a backup)
+# and remove the robots.txt line below.
+---
+deployment:
+  tasks:
+    - 'export DEPLOYPATH=$HOME/new.clickyfyre.com/'
+    # Safety: stop if the path is the main site folder or does not exist yet
+    - 'test "$DEPLOYPATH" != "$HOME/public_html/" && test "$DEPLOYPATH" != "$HOME/"'
+    - 'test -d "$DEPLOYPATH"'
+    - '/bin/cp -R ./. "$DEPLOYPATH"'
+    # Remove repo-only files that should not be public
+    - 'cd "$DEPLOYPATH" && /bin/rm -rf .git .claude .cpanel.yml .gitignore README.md tools documentation assets/sass'
+    # Staging only: keep the subdomain out of Google so it doesn't compete with the live site
+    - 'printf ''User-agent: *\nDisallow: /\n'' > "$DEPLOYPATH/robots.txt"'
